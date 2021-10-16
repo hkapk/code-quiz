@@ -14,18 +14,19 @@ var questions = [
 
 ]
 
-//set user score to 0 to begin the game
-//var userScore = 0;
 
 //set the question to begin at the first question from the list above
 var questionIndex = 0;
 
 
+
 // click start quiz to start a timer and advance to the series of questions
 var timer = document.querySelector("#startQuiz");
 var container = document.querySelector("#container");
-
-//
+var quizQuestions = document.querySelector("#quizQuestions");
+var currentTime = document.querySelector("#currentTime");
+var quizChoices = document.querySelector("#quizChoices");
+//answer buttons
 
 //timer set to 100 seconds at beginning of the quiz
 var secondsLeft = 100;
@@ -54,20 +55,18 @@ timer.addEventListener("click", function () {
     }
 
     //start quiz as the timer begins
-    startQuiz();
+    startQuiz(questionIndex);
 });
 
 //start quiz function
 function startQuiz() {
-
     questionCycle();
 }
 
 //function to cycle through questions when the Start Quiz button is clicked
 function questionCycle (){
     //clears content of the start quiz
-    test.innerHTML = "";
-    quizChoices.innerHTML =  "";
+    quizQuestions.innerHTML = "";
     newList.innerHTML = "";
 
    for (var i = 0; i < questions.length; i++) {
@@ -76,11 +75,16 @@ function questionCycle (){
        quizQuestions.textContent = questionOption;
    }
 
+
+//display the list of possible answers
    answerOptions.forEach(function (newItem) {
+       //create variable called listItem and make it a list Element
        var listItem = document.createElement("li");
-       listItem.textContent = (newItem);
+       listItem.textContent = newItem;
        quizQuestions.appendChild(newList);
        newList.appendChild(listItem);
+       //listItem.addEventListener("click", alert("a choice as clicked"));
+
    })
 
    

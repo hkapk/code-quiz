@@ -25,11 +25,21 @@ button {
 
 #currentTime {
   padding: 10px 10px;
-  font-size: 16px;
-  position: absolute;
-  justify-content: left;
+  font-size: 22px;
 }
 
 ul {
   list-style: none;
+}
+
+li {
+  background-color: yellowgreen;
+  margin-top: 20px;
+  margin-left: 30%;
+  padding: 15px 15px;
+  width: 30%;
+  font-size: 16px;
+  color: white;
+  border-radius: 12px;
+  border: 2px solid white;
 }
