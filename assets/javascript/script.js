@@ -2,7 +2,7 @@
 var questions = [
     {
         question: "JavaScript decides the ____________ of web pages.",
-        options: ["Design", "Structure", "Behavior",],
+        options: [" Design", " Structure", " Behavior",],
         correctAnswer: "Behavior"
     },
 
@@ -18,7 +18,7 @@ var questions = [
 //var userScore = 0;
 
 //set the question to begin at the first question from the list above
-//var questionIndex = 0;
+var questionIndex = 0;
 
 
 // click start quiz to start a timer and advance to the series of questions
@@ -34,7 +34,7 @@ var holdInterval = 0;
 // Holds penalty time
 var penalty = 10;
 // Creates new element
-var ulCreate = document.createElement("ul");
+var newList = document.createElement("ul");
 
 
 //timer function at the beginning of the game
@@ -59,13 +59,26 @@ timer.addEventListener("click", function () {
 
 //start quiz function
 function startQuiz() {
+
     questionCycle();
 }
 
-//function to cycle through questions
+//function to cycle through questions when the Start Quiz button is clicked
 function questionCycle (){
-    console.log("question cycle");
+    //clears content of the start quiz
+    test.innerHTML = "";
+    quizChoices.innerHTML =  "";
+    newList.innerHTML = "";
 
+   for (var i = 0; i < questions.length; i++) {
+       var questionOption = questions[questionIndex].question;
+       var answerOptions = questions[questionIndex].options;
+       quizQuestions.textContent = questionOption;
+   }
+
+
+   
+    console.log(questions);
 }
 //function for when the timer is out of time/ end of game
 function gameOver() {
