@@ -29,3 +29,7 @@ button {
   position: absolute;
   justify-content: left;
 }
+
+ul {
+  list-style: none;
+}

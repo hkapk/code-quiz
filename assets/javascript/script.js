@@ -76,6 +76,12 @@ function questionCycle (){
        quizQuestions.textContent = questionOption;
    }
 
+   answerOptions.forEach(function (newItem) {
+       var listItem = document.createElement("li");
+       listItem.textContent = (newItem);
+       quizQuestions.appendChild(newList);
+       newList.appendChild(listItem);
+   })
 
    
     console.log(questions);
