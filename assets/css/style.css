@@ -43,3 +43,7 @@ li {
   border-radius: 12px;
   border: 2px solid white;
 }
+
+li:hover {
+  background-color: orangered;
+}
