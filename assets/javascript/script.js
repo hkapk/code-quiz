@@ -2,7 +2,7 @@
 var timer = document.querySelector("#startQuiz");
 
 //timer set to 100 seconds at beginning of the quiz
-var secondsLeft = 100;
+var secondsLeft = 10;
 // Holds interval time
 var holdInterval = 0;
 // Holds penalty time
@@ -21,7 +21,7 @@ timer.addEventListener("click", function () {
 
             if (secondsLeft <= 0) {
                 clearInterval(holdInterval);
-                allDone();
+                gameOver();
                 currentTime.textContent = "You ran out of time!!";
             }
         }, 1000);
@@ -29,3 +29,8 @@ timer.addEventListener("click", function () {
     //alert("begin quiz");
 });
 
+
+//function for when the timer is out of time/ end of game
+function gameOver() {
+    currentTime.innerHTML = "";
+}
