@@ -2,7 +2,7 @@
 var timer = document.querySelector("#startQuiz");
 
 //timer set to 100 seconds at beginning of the quiz
-var secondsLeft = 10;
+var secondsLeft = 100;
 // Holds interval time
 var holdInterval = 0;
 // Holds penalty time
