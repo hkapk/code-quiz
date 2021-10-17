@@ -12,12 +12,22 @@ var questions = [
         correctAnswer: "No"
     },
 
+    {
+        question: "What is not a valid JavaScript data type?",
+        options: ["a String", "a Number", "an Array", "undefined"],
+        correctAnswer: "undefined"
+    }
+
 ]
 
 
 //set the question to begin at the first question from the list above
 var questionIndex = 0;
 
+//keep track of user score 
+var score = 10;
+//penalty for getting question wrong
+var penalize = 10;
 
 
 // click start quiz to start a timer and advance to the series of questions
@@ -29,11 +39,10 @@ var quizChoices = document.querySelector("#quizChoices");
 //answer buttons
 
 //timer set to 100 seconds at beginning of the quiz
-var secondsLeft = 100;
+var secondsLeft = 60;
 // Holds interval time
 var holdInterval = 0;
-// Holds penalty time
-var penalty = 10;
+
 // Creates new element
 var newList = document.createElement("ul");
 
@@ -91,12 +100,28 @@ function startQuiz(questionIndex) {
 
 }
 function decide(event) {
-   alert("button clicked");
+    console.log("an option button clicked");
+
 }
 
 
 //function for when the timer is out of time/ end of game
+//appends the last page
 function gameOver() {
     currentTime.innerHTML = "";
+    quizQuestions.innerHTML = "";
+
+    //new header for 'game over screen'
+    var newH1 = document.createElement("h1");
+    newH1.setAttribute("id", "newH1");
+    newH1.textContent = "GAME OVER!"
+
+    quizQuestions.appendChild(newH1);
+
+    //new <p>
+    var newP = document.createElement("p");
+    newP.setAttribute("id", "newP");
+
+    quizQuestions.appendChild(newP);
 }
 
