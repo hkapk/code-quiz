@@ -59,12 +59,9 @@ timer.addEventListener("click", function () {
 });
 
 //start quiz function
-function startQuiz() {
-    questionCycle();
-}
-
+function startQuiz(questionIndex) {
 //function to cycle through questions when the Start Quiz button is clicked
-function questionCycle (){
+
     //clears content of the start quiz
     quizQuestions.innerHTML = "";
     newList.innerHTML = "";
@@ -83,13 +80,21 @@ function questionCycle (){
        listItem.textContent = newItem;
        quizQuestions.appendChild(newList);
        newList.appendChild(listItem);
-       //listItem.addEventListener("click", alert("a choice as clicked"));
-
-   })
-
+       listItem.addEventListener("click", (decide));
+       //function for clicking answer choices
+       //if button is clicked and answer matches add time to timer
+       //if button is clicked and answer is wrong remove time from timer
    
-    console.log(questions);
+    })
+    //console.log(questions);
+
+
 }
+function decide(event) {
+   alert("button clicked");
+}
+
+
 //function for when the timer is out of time/ end of game
 function gameOver() {
     currentTime.innerHTML = "";
