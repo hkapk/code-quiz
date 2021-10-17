@@ -25,9 +25,9 @@ var questions = [
 var questionIndex = 0;
 
 //keep track of user score 
-var score = 10;
+//ar score = 10;
 //penalty for getting question wrong
-var penalize = 10;
+//var penalize = 10;
 
 
 // click start quiz to start a timer and advance to the series of questions
@@ -102,7 +102,26 @@ function startQuiz(questionIndex) {
 function decide(event) {
     console.log("an option button clicked");
 
-}
+    //if listItem === questions options correct Answer then increment score
+    //create element to be targeted
+    var element = event.target;
+    
+    if (element.matches("li")) {
+
+
+
+        //if it is right
+        if (element.textContent == questions[questionIndex].correctAnswer) {
+            secondsLeft++;
+        } else {
+            secondsLeft = secondsLeft - 10;
+        }
+        }
+
+    }
+    
+
+
 
 
 //function for when the timer is out of time/ end of game
@@ -123,5 +142,66 @@ function gameOver() {
     newP.setAttribute("id", "newP");
 
     quizQuestions.appendChild(newP);
-}
 
+    //seconds remaining is the score
+    if (secondsLeft >= 0) {
+        //second new paragraph
+        var newP2 = document.createElement("p");
+        clearInterval(holdInterval);
+        newP.textContent = "Your score is: " + secondsLeft;
+
+        quizQuestions.appendChild(newP2);
+    };
+
+// Label
+var userName = document.createElement("label");
+userName.setAttribute("id", "userName");
+userName.textContent = "Type your name here: ";
+
+quizQuestions.appendChild(userName);
+
+// input
+var createInput = document.createElement("input");
+createInput.setAttribute("type", "text");
+createInput.setAttribute("id", "name");
+createInput.textContent = "";
+
+quizQuestions.appendChild(createInput);
+
+// submit
+var createSave = document.createElement("button");
+createSave.setAttribute("type", "save");
+createSave.setAttribute("id", "save");
+createSave.textContent = "Save Score";
+
+quizQuestions.appendChild(createSave);
+
+// Event listener to capture initials and local storage for initials and score
+createSave.addEventListener("click", function () {
+    var name = createInput.value;
+
+    if (name === null) {
+
+        alert("you must enter a value");
+
+    } else {
+        var finalScore = {
+            name: name,
+            score: secondsLeft,
+        }
+        console.log(finalScore);
+        var allScores = localStorage.getItem("allScores");
+        if (allScores === null) {
+            allScores = [];
+        } else {
+            allScores = JSON.parse(allScores);
+        }
+        allScores.push(finalScore);
+        var newScore = JSON.stringify(allScores);
+        localStorage.setItem("allScores", newScore);
+        // Travels to final page
+        window.location.replace("./scores.html");
+    }
+});
+
+}
