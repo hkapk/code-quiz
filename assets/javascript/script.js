@@ -2,13 +2,13 @@
 var questions = [
     {
         question: "JavaScript decides the ____________ of web pages.",
-        options: [" Design", " Structure", " Behavior",],
+        options: [" Design", " Structure", " Behavior", "all of the above"],
         correctAnswer: "Behavior"
     },
 
     {
         question: "Is a JavaScript class an object?",
-        options: ["Yes", "No"],
+        options: ["Yes", "No", "all of the above", "Booleean"],
         correctAnswer: "No"
     },
 
@@ -16,7 +16,14 @@ var questions = [
         question: "What is not a valid JavaScript data type?",
         options: ["a String", "a Number", "an Array", "undefined"],
         correctAnswer: "undefined"
-    }
+    },
+
+    {
+        question: "Common used data types DO Not Include",
+        options: ["Strings", "Booleans", "Alerts", "Numbers"],
+        correctAnswer: "Booleans"
+    },
+
 
 ]
 
@@ -95,12 +102,12 @@ function startQuiz(questionIndex) {
        //if button is clicked and answer is wrong remove time from timer
    
     })
-    //console.log(questions);
-
+    console.log(questions);
 
 }
+
 function decide(event) {
-    console.log("an option button clicked");
+   console.log("an option button clicked");
 
     //if listItem === questions options correct Answer then increment score
     //create element to be targeted
@@ -109,17 +116,29 @@ function decide(event) {
     if (element.matches("li")) {
 
 
-
-        //if it is right
+        //if it is right-- not currently finding correct answers to be correct
         if (element.textContent == questions[questionIndex].correctAnswer) {
             secondsLeft++;
+            console.log("correct answer");
         } else {
             secondsLeft = secondsLeft - 10;
+            console.log("incorrect answer");
         }
         }
 
+        questionIndex++;
+
+        if(questionIndex >= questions.length) {
+            gameOver();
+            
+        } else {
+            startQuiz(questionIndex);
+        }
+
+
     }
-    
+
+
 
 
 
@@ -144,6 +163,7 @@ function gameOver() {
     quizQuestions.appendChild(newP);
 
     //seconds remaining is the score
+    //This isn't working properly
     if (secondsLeft >= 0) {
         //second new paragraph
         var newP2 = document.createElement("p");
@@ -154,7 +174,7 @@ function gameOver() {
     };
 
 // Label
-var userName = document.createElement("label");
+var userName = document.createElement("name");
 userName.setAttribute("id", "userName");
 userName.textContent = "Type your name here: ";
 
