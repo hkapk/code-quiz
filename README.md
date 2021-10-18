@@ -1,6 +1,6 @@
 # code-quiz
 
-Quiz Game
+Quiz Game utilizing javascript time and if/ else statements to keep score. Game scores and names can be stored with localStorage.
 
 Rules
 -When the start game button is clicked a timer will begin.
